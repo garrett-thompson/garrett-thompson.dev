@@ -17,7 +17,7 @@ const Home: NextPage = () => {
 
       <main>
         <div
-          className="lg:text-[104px] text-green-500 opacity-50 tracking-tight"
+          className="lg:text-[104px] text-emerald-600 opacity-50 tracking-tight"
           style={{
             fontVariationSettings: "'wght' 900, 'slnt' -10",
           }}

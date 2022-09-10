@@ -18,7 +18,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html className="h-screen w-screen bg-gradient-to-t from-emerald-900 to-teal-200">
         <Head>
           <link
             rel="preload"
