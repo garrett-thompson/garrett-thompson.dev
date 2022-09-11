@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { Banner, Heading1 } from "../components/typography";
-import { StripeExperience } from "../partials/experience/stripe";
+import { StripeExperience } from "../layouts/experience/stripe";
 
 const Home: NextPage = () => {
   return (
@@ -15,9 +15,10 @@ const Home: NextPage = () => {
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
 
+      <Banner>GARRETT THOMPSON</Banner>
+
       <main className="flex flex-col w-full h-full items-center">
-        <Banner>GARRETT THOMPSON</Banner>
-        <section className="w-[50%]">
+        <section className="w-[60%] mt-12">
           <Heading1 className="text-sky-300 opacity-60">EXPERIENCE</Heading1>
           <StripeExperience />
         </section>
