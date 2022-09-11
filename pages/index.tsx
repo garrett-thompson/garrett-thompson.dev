@@ -1,7 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { Heading1 } from "../components/typography";
-// import Image from "next/image";
+import { Banner, Heading1 } from "../components/typography";
+import { StripeExperience } from "../partials/experience/stripe";
 
 const Home: NextPage = () => {
   return (
@@ -15,17 +15,11 @@ const Home: NextPage = () => {
         {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
 
-      <main>
-        <div
-          className="lg:text-[104px] text-emerald-600 opacity-50 tracking-tight"
-          style={{
-            fontVariationSettings: "'wght' 900, 'slnt' -10",
-          }}
-        >
-          GARRETT THOMPSON
-        </div>
-        <section>
-          <Heading1>Experience</Heading1>
+      <main className="flex flex-col w-full h-full items-center">
+        <Banner>GARRETT THOMPSON</Banner>
+        <section className="w-[50%]">
+          <Heading1 className="text-sky-300 opacity-60">EXPERIENCE</Heading1>
+          <StripeExperience />
         </section>
       </main>
 

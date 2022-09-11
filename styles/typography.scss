@@ -1,3 +1,4 @@
+/* Variable font weight */
 .font-100 {
   font-variation-settings: "wght" 100;
 }
@@ -6,6 +7,9 @@
 }
 .font-300 {
   font-variation-settings: "wght" 300;
+}
+.font-350 {
+  font-variation-settings: "wght" 350;
 }
 .font-400 {
   font-variation-settings: "wght" 400;
@@ -24,4 +28,8 @@
 }
 .font-900 {
   font-variation-settings: "wght" 900;
+}
+
+.heading {
+  font-variation-settings: "wght" 900, "slnt" -10;
 }
