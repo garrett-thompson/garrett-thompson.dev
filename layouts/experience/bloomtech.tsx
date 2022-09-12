@@ -2,7 +2,7 @@ import { ExperienceHeader } from "../../components/experience-header";
 import { List } from "../../components/list";
 import { Body } from "../../components/typography";
 
-export const BloomTechExperience = () => (
+export const BloomTechExperience1 = () => (
   <div>
     <ExperienceHeader
       dates="May 2021 - Mar 2022"
@@ -30,6 +30,11 @@ export const BloomTechExperience = () => (
         </Body>,
       ]}
     />
+  </div>
+);
+
+export const BloomTechExperience2 = () => (
+  <div>
     <ExperienceHeader
       dates="Apr 2019 - May 2021"
       company="BloomTech (fka Lambda School)"

@@ -2,7 +2,7 @@ import { ExperienceHeader } from "../../components/experience-header";
 import { List } from "../../components/list";
 import { Body } from "../../components/typography";
 
-export const OnovativeExperience = () => (
+export const OnovativeExperience1 = () => (
   <div>
     <ExperienceHeader
       dates="Feb 2017 - Nov 2018"
@@ -26,6 +26,11 @@ export const OnovativeExperience = () => (
         </Body>,
       ]}
     />
+  </div>
+);
+
+export const OnovativeExperience2 = () => (
+  <div>
     <ExperienceHeader
       dates="May 2016 - Feb 2017"
       company="Onovative"
