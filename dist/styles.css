@@ -775,6 +775,10 @@ video {
   overflow-x: scroll;
 }
 
+.overflow-y-scroll {
+  overflow-y: scroll;
+}
+
 .whitespace-pre {
   white-space: pre;
 }
@@ -907,6 +911,10 @@ video {
 
 .opacity-60 {
   opacity: 0.6;
+}
+
+.opacity-20 {
+  opacity: 0.2;
 }
 
 .blur-md {

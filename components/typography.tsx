@@ -5,7 +5,7 @@ interface Heading1Props {
   children: React.ReactNode;
 }
 export const Banner = ({ children }: Heading1Props) => (
-  <div className="absolute left-[92px] top-[12px] origin-top-left lg:text-[70px] heading text-sky-100 opacity-40 tracking-tight rotate-90">
+  <div className="absolute left-[92px] top-[12px] origin-top-left lg:text-[70px] heading text-sky-100 opacity-20 tracking-tight rotate-90">
     {children}
   </div>
 );

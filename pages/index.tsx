@@ -31,10 +31,12 @@ const Home: NextPage = () => {
 
       <Banner>GARRETT THOMPSON</Banner>
 
-      <main className="h-screen w-screen overflow-scroll bg-gradient-to-t from-sky-900 to-fuchsia-500">
-        <section className="flex flex-col pl-[20%] h-full pt-12">
-          <Heading1 className="text-sky-300 opacity-60">EXPERIENCE</Heading1>
-          <div className="flex space-x-6 overflow-x-scroll flex-1 pb-12">
+      <main className="h-screen w-screen overflow-y-scroll bg-gradient-to-t from-sky-900 to-fuchsia-500 pt-12">
+        <Heading1 className="text-sky-300 pl-[20%] opacity-60">
+          EXPERIENCE
+        </Heading1>
+        <section className="flex flex-col pl-[20%] h-full overflow-x-scroll">
+          <div className="flex space-x-6 flex-1 pb-12">
             <Draggable currentIndex={cardIndex} index={0}>
               <Card>
                 <StripeExperience />
