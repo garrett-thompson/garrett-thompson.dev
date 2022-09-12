@@ -647,6 +647,10 @@ video {
   height: 100%;
 }
 
+.min-h-screen {
+  min-height: 100vh;
+}
+
 .w-8 {
   width: 2rem;
 }
@@ -695,6 +699,10 @@ video {
 
 .items-center {
   align-items: center;
+}
+
+.overflow-scroll {
+  overflow: scroll;
 }
 
 .whitespace-pre {
