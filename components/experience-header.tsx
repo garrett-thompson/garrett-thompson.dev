@@ -4,14 +4,16 @@ interface ExperienceHeaderProps {
   dates: string;
   company: string;
   title: string;
+  className?: string;
 }
 
 export const ExperienceHeader = ({
   dates,
   company,
   title,
+  className,
 }: ExperienceHeaderProps) => (
-  <div>
+  <div className={className}>
     <Company company={company} />
     <div className="whitespace-pre">
       <Title title={title} />

@@ -34,6 +34,7 @@ export const BloomTechExperience = () => (
       dates="Apr 2019 - May 2021"
       company="BloomTech (fka Lambda School)"
       title="Software Engineer"
+      className="mt-4"
     />
     <List
       className="mt-3"
