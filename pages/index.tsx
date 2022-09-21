@@ -31,7 +31,7 @@ const Home: NextPage = () => {
 
       <main className="h-screen w-screen px-48 py-12 flex flex-col bg-gradient-to-t from-sky-900 to-fuchsia-500">
         <Heading1 className="text-fuchsia-200/80">EXPERIENCE</Heading1>
-        <div className="overflow-x-scroll flex flex-col flex-1 mb-6 space-x-6">
+        <div className="flex flex-col flex-1 mb-6 space-x-6">
           <CardStack className="flex-auto">
             <Card token="stripe_1" className="overflow-scroll">
               <StripeExperience />
