@@ -20,7 +20,7 @@ export const ExperienceHeader = ({
   </div>
 );
 
-const HEADER_TEXT_COLOR = "text-fuchsia-900";
+const HEADER_TEXT_COLOR = "text-slate-900";
 
 interface CompanyProps {
   children: string;

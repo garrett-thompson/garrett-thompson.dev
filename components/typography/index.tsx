@@ -36,7 +36,7 @@ export const Body = ({ children, className, style, element }: BodyProps) => {
 
   return (
     <Element
-      className={classnames("text-fuchsia-900 font-350", className)}
+      className={classnames("text-slate-900 font-350", className)}
       style={style}
     >
       {children}
