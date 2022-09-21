@@ -26,19 +26,22 @@ export const CardStack = ({ children, className }: CardStackProps) => {
     <div className={classNames("flex flex-col justify-between", className)}>
       <ul className="relative h-full my-8">
         {cards.map((card, index) => {
+          const top = index * TOP_OFFSET;
+          const left = index * LEFT_OFFSET;
           const scale = 1 - index * SCALE_FACTOR;
-          console.log({ scale });
+          const zIndex = cards.length - index;
+
           return (
             <motion.li
               className="absolute h-full"
               key={card.props.token}
               initial={false}
               animate={{
-                top: index * TOP_OFFSET,
-                left: index * LEFT_OFFSET,
+                top,
+                left,
                 scale,
                 width: "540px",
-                zIndex: cards.length - index,
+                zIndex,
               }}
             >
               <Card
