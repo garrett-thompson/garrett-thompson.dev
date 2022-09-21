@@ -1,4 +1,4 @@
-import { ExperienceHeader } from "../../components/experience-header";
+import { ExperienceHeader } from "../../components/typography/experience-header";
 import { List } from "../../components/list";
 import { Body } from "../../components/typography";
 
@@ -39,7 +39,6 @@ export const BloomTechExperience2 = () => (
       dates="Apr 2019 - May 2021"
       company="BloomTech (fka Lambda School)"
       title="Software Engineer"
-      className="mt-4"
     />
     <List
       className="mt-3"

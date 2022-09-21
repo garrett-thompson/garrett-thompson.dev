@@ -9,7 +9,7 @@ export interface CardProps {
 export const Card = ({ children, className }: CardProps) => (
   <div
     className={classNames(
-      "min-w-[640px] px-4 py-6 rounded-xl bg-stone-100/20 backdrop-blur-md",
+      "min-w-[640px] px-4 py-6 rounded-xl shadow-xl bg-fuchsia-50 backdrop-blur-lg",
       className
     )}
   >

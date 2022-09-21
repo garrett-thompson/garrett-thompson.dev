@@ -1,4 +1,4 @@
-import { ExperienceHeader } from "../../components/experience-header";
+import { ExperienceHeader } from "../../components/typography/experience-header";
 import { List } from "../../components/list";
 import { Body } from "../../components/typography";
 
@@ -35,7 +35,6 @@ export const OnovativeExperience2 = () => (
       dates="May 2016 - Feb 2017"
       company="Onovative"
       title="Software Engineer I"
-      className="mt-4"
     />
     <List
       className="mt-3"

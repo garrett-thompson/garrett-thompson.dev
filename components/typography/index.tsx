@@ -17,7 +17,7 @@ interface Heading1Props {
 export const Heading1 = ({ children, className }: Heading1Props) => (
   <h1
     className={classnames(
-      "font-600 text-[54px] heading text-fuchsia-200 tracking-tight",
+      "font-600 text-[54px] heading tracking-tight",
       className
     )}
   >
@@ -36,7 +36,7 @@ export const Body = ({ children, className, style, element }: BodyProps) => {
 
   return (
     <Element
-      className={classnames("text-fuchsia-100 font-350", className)}
+      className={classnames("text-fuchsia-900 font-350", className)}
       style={style}
     >
       {children}
