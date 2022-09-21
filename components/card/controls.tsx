@@ -1,14 +1,20 @@
 import classNames from "classnames";
 
-interface ExperienceControlsProps {
+interface CardStackControlsProps {
   className?: string;
+  onNext: () => void;
+  onPrev: () => void;
 }
-export const ExperienceControls = ({ className }: ExperienceControlsProps) => (
+export const CardStackControls = ({
+  className,
+  onNext,
+  onPrev,
+}: CardStackControlsProps) => (
   <div className={classNames("flex", className)}>
-    <button className="mr-2">
+    <button className="mr-2" onClick={onPrev}>
       <LeftArrow />
     </button>
-    <button>
+    <button onClick={onNext}>
       <RightArrow />
     </button>
   </div>
@@ -21,7 +27,7 @@ const LeftArrow = () => (
     viewBox="0 0 24 24"
     stroke-width="1.5"
     stroke="currentColor"
-    className="w-12 h-12 text-fuchsia-100"
+    className="w-12 h-12 text-fuchsia-100 cursor-pointer"
   >
     <path
       stroke-linecap="round"
@@ -38,7 +44,7 @@ const RightArrow = () => (
     viewBox="0 0 24 24"
     stroke-width="1.5"
     stroke="currentColor"
-    className="w-12 h-12 text-fuchsia-100"
+    className="w-12 h-12 text-fuchsia-100 cursor-pointer"
   >
     <path
       stroke-linecap="round"

@@ -1,6 +1,7 @@
 import classNames from "classnames";
 
-interface CardProps {
+export interface CardProps {
+  token: string;
   children?: React.ReactNode;
   className?: string;
 }
