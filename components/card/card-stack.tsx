@@ -48,7 +48,7 @@ export const CardStack = ({ children, className }: CardStackProps) => {
                 scale,
                 zIndex,
               }}
-              transition={{ duration: 0.5 }}
+              transition={{ duration: 0.4, type: "tween", ease: "circOut" }}
             >
               <Card
                 {...card.props}
