@@ -25,38 +25,33 @@ const Home: NextPage = () => {
           name="description"
           content="Personal website for Garrett Thompson"
         />
-        {/* <link rel="icon" href="/favicon.ico" /> */}
       </Head>
 
       <Banner>GARRETT THOMPSON</Banner>
 
-      <main className="h-screen w-screen overflow-y-scroll bg-gradient-to-t from-sky-900 to-fuchsia-500 py-12">
-        <Heading1 className="text-sky-300 pl-[20%] opacity-70">
-          EXPERIENCE
-        </Heading1>
-        <section className="flex flex-col pl-[20%] h-full overflow-x-scroll">
-          <div className="flex space-x-6 flex-1 pb-8">
-            <Card>
-              <StripeExperience />
-            </Card>
-            <Card>
-              <BloomTechExperience1 />
-            </Card>
-            <Card>
-              <BloomTechExperience2 />
-            </Card>
-            <Card>
-              <SemanticBitsExperience />
-            </Card>
-            <Card>
-              <OnovativeExperience1 />
-            </Card>
-            <Card>
-              <OnovativeExperience2 />
-            </Card>
-          </div>
-        </section>
-        <ExperienceControls className="pl-[20%]" />
+      <main className="h-screen w-screen px-32 flex flex-col bg-gradient-to-t from-sky-900 to-fuchsia-500 py-12">
+        <Heading1 className="text-sky-300 opacity-70">EXPERIENCE</Heading1>
+        <div className="overflow-x-scroll flex mb-6 space-x-6">
+          <Card className="overflow-scroll">
+            <StripeExperience />
+          </Card>
+          <Card className="overflow-scroll">
+            <BloomTechExperience1 />
+          </Card>
+          <Card className="overflow-scroll">
+            <BloomTechExperience2 />
+          </Card>
+          <Card className="overflow-scroll">
+            <SemanticBitsExperience />
+          </Card>
+          <Card className="overflow-scroll">
+            <OnovativeExperience1 />
+          </Card>
+          <Card className="overflow-scroll">
+            <OnovativeExperience2 />
+          </Card>
+        </div>
+        <ExperienceControls className="" />
       </main>
     </div>
   );

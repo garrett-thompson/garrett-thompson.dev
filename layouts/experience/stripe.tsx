@@ -14,8 +14,8 @@ export const StripeExperience = () => (
       items={[
         <Body>
           Overhauled support ticket routing. Used data signals about the
-          merchant to get their ticket to right people more accurately &
-          quicker. This reduced both the time-to-resolution and number of touch
+          merchant to get their ticket to the right people more accurately &
+          quickly. This reduced both the time-to-resolution and number of touch
           points for merchants dealing with Stripe support.
         </Body>,
         <Body>
