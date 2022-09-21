@@ -12,7 +12,7 @@ const LEFT_OFFSET = 150;
 // Increasing this makes cards down the stack smaller
 const SCALE_FACTOR = 0.12;
 // Increasing this makes cards down the stack more shadowed
-const SHADOW_FACTOR = 9;
+const SHADOW_FACTOR = 7;
 
 interface CardStackProps {
   children: React.ReactElement<CardProps>[];
@@ -47,13 +47,15 @@ export const CardStack = ({ children, className }: CardStackProps) => {
                 left,
                 scale,
                 zIndex,
-                filter: `brightness(${brightness})`,
               }}
               transition={{ duration: 0.5 }}
             >
               <Card
                 {...card.props}
                 className={classNames(card.props.className, "h-full")}
+                animate={{
+                  filter: `brightness(${brightness})`,
+                }}
               />
             </motion.li>
           );

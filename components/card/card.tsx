@@ -7,10 +7,10 @@ export interface CardProps extends MotionProps {
   className?: string;
 }
 
-export const Card = ({ children, className, overlay, ...props }: CardProps) => (
+export const Card = ({ children, className, ...props }: CardProps) => (
   <motion.div
     className={classNames(
-      "relative w-[640px] px-4 py-6 rounded-xl shadow-xl bg-fuchsia-50",
+      "relative w-[640px] px-4 py-6 rounded-xl bg-fuchsia-50 shadow-xl",
       className
     )}
     {...props}
