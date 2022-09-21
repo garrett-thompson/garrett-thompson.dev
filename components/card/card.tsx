@@ -1,37 +1,20 @@
+import { motion, MotionProps } from "framer-motion";
 import classNames from "classnames";
 
-export interface CardProps {
+export interface CardProps extends MotionProps {
   token: string;
   children?: React.ReactNode;
   className?: string;
-  overlay?: React.ReactNode;
 }
 
-export const Card = ({ children, className, overlay }: CardProps) => (
-  <div
+export const Card = ({ children, className, overlay, ...props }: CardProps) => (
+  <motion.div
     className={classNames(
-      "w-[640px] px-4 py-6 rounded-xl shadow-xl bg-fuchsia-50",
+      "relative w-[640px] px-4 py-6 rounded-xl shadow-xl bg-fuchsia-50",
       className
     )}
+    {...props}
   >
-    {overlay}
     {children}
-  </div>
-);
-
-interface OverlayProps {
-  /**
-   * Value between 0-1
-   */
-  opacity: number;
-  className?: string;
-}
-const Overlay = ({ opacity, className }: OverlayProps) => (
-  <div
-    className={classNames(
-      "w-full h-full rounded-xl absolute left-0 top-0 z-0 bg-gray-900",
-      className
-    )}
-    style={{ opacity }}
-  ></div>
+  </motion.div>
 );

@@ -5,9 +5,13 @@ import { Card, CardProps } from "./card";
 import classNames from "classnames";
 import { CardStackControls } from "./controls";
 
-const TOP_OFFSET = 15;
-const LEFT_OFFSET = 120;
+// Increasing this makes cards down the stack further from the top
+const TOP_OFFSET = 20;
+// Increasing this makes cards down the stack further to the right
+const LEFT_OFFSET = 150;
+// Increasing this makes cards down the stack smaller
 const SCALE_FACTOR = 0.12;
+// Increasing this makes cards down the stack more shadowed
 const SHADOW_FACTOR = 9;
 
 interface CardStackProps {
@@ -31,7 +35,7 @@ export const CardStack = ({ children, className }: CardStackProps) => {
           const left = index * (1 + SCALE_FACTOR) * LEFT_OFFSET;
           const scale = 1 - index * SCALE_FACTOR;
           const zIndex = cards.length - index;
-          const opacity = 0 + (index * SHADOW_FACTOR) / 100;
+          const brightness = 1 - (index * SHADOW_FACTOR) / 100;
 
           return (
             <motion.li
@@ -43,13 +47,13 @@ export const CardStack = ({ children, className }: CardStackProps) => {
                 left,
                 scale,
                 zIndex,
+                filter: `brightness(${brightness})`,
               }}
               transition={{ duration: 0.5 }}
             >
               <Card
                 {...card.props}
                 className={classNames(card.props.className, "h-full")}
-                overlay={<Overlay opacity={opacity} />}
               />
             </motion.li>
           );
@@ -59,21 +63,3 @@ export const CardStack = ({ children, className }: CardStackProps) => {
     </div>
   );
 };
-
-interface OverlayProps {
-  /**
-   * Value between 0-1
-   */
-  opacity: number;
-  className?: string;
-}
-const Overlay = ({ opacity, className }: OverlayProps) => (
-  <motion.div
-    className={classNames(
-      "w-full h-full rounded-xl absolute left-0 top-0 z-0 bg-gray-900",
-      className
-    )}
-    animate={{ opacity }}
-    transition={{ duration: 0.4 }}
-  ></motion.div>
-);
