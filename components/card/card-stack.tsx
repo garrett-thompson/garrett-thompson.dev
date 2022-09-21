@@ -19,23 +19,28 @@ interface CardStackProps {
   className?: string;
 }
 export const CardStack = ({ children, className }: CardStackProps) => {
-  const [cards, setCards] = React.useState(children);
+  const [cardPosition, setCardPosition] = React.useState(0);
   const nextCard = () => {
-    setCards(moveForward(cards));
+    setCardPosition((state) =>
+      state < children.length - 1 ? state + 1 : state
+    );
   };
   const prevCard = () => {
-    setCards(moveBackward(cards));
+    setCardPosition((state) => (state > 0 ? state - 1 : state));
   };
 
   return (
     <div className={classNames("flex flex-col justify-between", className)}>
       <ul className="relative h-full my-4 lg:my-8">
-        {cards.map((card, index) => {
-          const top = index * TOP_OFFSET;
-          const left = index * (1 + SCALE_FACTOR) * LEFT_OFFSET;
-          const scale = 1 - index * SCALE_FACTOR;
-          const zIndex = cards.length - index;
-          const brightness = 1 - (index * SHADOW_FACTOR) / 100;
+        {children.map((card, index) => {
+          const position = index - cardPosition;
+          const top = position * TOP_OFFSET;
+          let left: string | number =
+            position * (1 + SCALE_FACTOR) * LEFT_OFFSET;
+          if (position < 0) left = left * 10;
+          const scale = 1 - position * SCALE_FACTOR;
+          const zIndex = children.length - position;
+          const brightness = 1 - (position * SHADOW_FACTOR) / 100;
 
           return (
             <motion.li
@@ -48,7 +53,7 @@ export const CardStack = ({ children, className }: CardStackProps) => {
                 scale,
                 zIndex,
               }}
-              transition={{ duration: 0.4, type: "tween", ease: "circOut" }}
+              transition={{ duration: 0.4, type: "tween", ease: "easeInOut" }}
             >
               <Card
                 {...card.props}
