@@ -29,7 +29,7 @@ export const CardStack = ({ children, className }: CardStackProps) => {
 
   return (
     <div className={classNames("flex flex-col justify-between", className)}>
-      <ul className="relative h-full my-8">
+      <ul className="relative h-full my-4 lg:my-8">
         {cards.map((card, index) => {
           const top = index * TOP_OFFSET;
           const left = index * (1 + SCALE_FACTOR) * LEFT_OFFSET;

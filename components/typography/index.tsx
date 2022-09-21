@@ -5,9 +5,9 @@ interface Heading1Props {
   children: React.ReactNode;
 }
 export const Banner = ({ children }: Heading1Props) => (
-  <div className="absolute left-[92px] top-[12px] origin-top-left lg:text-[70px] heading text-sky-100 opacity-20 tracking-tight rotate-90">
+  <span className="absolute left-[-12px] top-[-74px] origin-bottom-left text-[56px] lg:text-[70px] lg:top-[-82px] heading text-sky-100 opacity-10 lg:opacity-20 tracking-tight rotate-[90deg] whitespace-nowrap">
     {children}
-  </div>
+  </span>
 );
 
 interface Heading1Props {
@@ -17,7 +17,7 @@ interface Heading1Props {
 export const Heading1 = ({ children, className }: Heading1Props) => (
   <h1
     className={classnames(
-      "font-600 text-[54px] heading tracking-tight",
+      "font-600 text-[36px] lg:text-[54px] heading tracking-tight",
       className
     )}
   >
