@@ -1,14 +1,15 @@
 import classnames from "classnames";
+import React from "react";
 
 interface ListProps {
-  items: React.ReactNode[];
+  children?: React.ReactNode;
   className?: string;
 }
 
-export const List = ({ items, className }: ListProps) => (
+export const List = ({ children, className }: ListProps) => (
   <ul className={classnames("list-disc ml-4 text-fuchsia-800", className)}>
-    {items.map((item) => {
-      return <li className="mt-2">{item}</li>;
-    })}
+    {React.Children.map(children, (child) => (
+      <li className="mt-2">{child}</li>
+    ))}
   </ul>
 );

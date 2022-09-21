@@ -9,23 +9,20 @@ export const OnovativeExperience1 = () => (
       company="Onovative"
       title="Software Engineer II"
     />
-    <List
-      className="mt-3"
-      items={[
-        <Body>
-          Updated & redesigned parts of our on-premises software product to live
-          in the AWS cloud. This improved observability & allowed us to ship
-          updates much more easily.
-        </Body>,
-        <Body>
-          Added a new communication channel (surveys) to our omni-channel
-          marketing product. It was an end-to-end solution including a survey
-          creation tool, a survey taking tool, and all the necessary
-          infrastructure to send & host personalized surveys for our customers'
-          customers.
-        </Body>,
-      ]}
-    />
+    <List className="mt-3">
+      <Body>
+        Updated & redesigned parts of our on-premises software product to live
+        in the AWS cloud. This improved observability & allowed us to ship
+        updates much more easily.
+      </Body>
+      <Body>
+        Added a new communication channel (surveys) to our omni-channel
+        marketing product. It was an end-to-end solution including a survey
+        creation tool, a survey taking tool, and all the necessary
+        infrastructure to send & host personalized surveys for our customers'
+        customers.
+      </Body>
+    </List>
   </div>
 );
 
@@ -36,14 +33,11 @@ export const OnovativeExperience2 = () => (
       company="Onovative"
       title="Software Engineer I"
     />
-    <List
-      className="mt-3"
-      items={[
-        <Body>
-          Contributed to existing C#, JavaScript, and Ruby codebases. Added
-          features & fixed bugs across UIs, SQL queries, and API endpoints.
-        </Body>,
-      ]}
-    />
+    <List className="mt-3">
+      <Body>
+        Contributed to existing C#, JavaScript, and Ruby codebases. Added
+        features & fixed bugs across UIs, SQL queries, and API endpoints.
+      </Body>
+    </List>
   </div>
 );

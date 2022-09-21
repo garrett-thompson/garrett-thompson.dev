@@ -9,16 +9,13 @@ export const SemanticBitsExperience = () => (
       company="SemanticBits"
       title="Full Stack Developer"
     />
-    <List
-      className="mt-3"
-      items={[
-        <Body>
-          Worked on a full stack app for the Quality Payment Program, a program
-          by the Center for Medicare & Medicaid Services. The app enabled health
-          service providers to submit information & upload documents to be
-          reimbursed for providing high-quality services to their customers.
-        </Body>,
-      ]}
-    />
+    <List className="mt-3">
+      <Body>
+        Worked on a full stack app for the Quality Payment Program, a program by
+        the Center for Medicare & Medicaid Services. The app enabled health
+        service providers to submit information & upload documents to be
+        reimbursed for providing high-quality services to their customers.
+      </Body>
+    </List>
   </div>
 );
