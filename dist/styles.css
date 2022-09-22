@@ -628,6 +628,14 @@ video {
   width: 3rem;
 }
 
+.w-\[calc\(100vw-48px\)\] {
+  width: calc(100vw - 48px);
+}
+
+.max-w-\[calc\(100vw-48px\)\] {
+  max-width: calc(100vw - 48px);
+}
+
 .flex-1 {
   flex: 1 1 0%;
 }
