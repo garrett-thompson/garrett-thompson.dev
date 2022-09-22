@@ -1,55 +1,108 @@
+import { motion } from "framer-motion";
 import classNames from "classnames";
 
 interface CardStackControlsProps {
   className?: string;
   onNext: () => void;
   onPrev: () => void;
+  cardPosition: number;
+  numberOfCards: number;
 }
 export const CardStackControls = ({
   className,
   onNext,
   onPrev,
+  cardPosition,
+  numberOfCards,
 }: CardStackControlsProps) => (
   <div className={classNames("flex", className)}>
-    <button className="mr-2" onClick={onPrev}>
-      <LeftArrow />
-    </button>
-    <button onClick={onNext}>
-      <RightArrow />
-    </button>
+    <LeftArrowButton
+      className="mr-3"
+      enabled={cardPosition > 0}
+      onClick={onPrev}
+    />
+    <RightArrowButton
+      enabled={cardPosition < numberOfCards - 1}
+      onClick={onNext}
+    />
   </div>
 );
 
-const LeftArrow = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke-width="1.5"
-    stroke="currentColor"
-    className="w-12 h-12 text-fuchsia-100 cursor-pointer"
-  >
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-    />
-  </svg>
-);
+interface ButtonProps {
+  enabled: boolean;
+  onClick: () => void;
+  className?: string;
+}
 
-const RightArrow = () => (
-  <svg
-    xmlns="http://www.w3.org/2000/svg"
-    fill="none"
-    viewBox="0 0 24 24"
-    stroke-width="1.5"
-    stroke="currentColor"
-    className="w-12 h-12 text-fuchsia-100 cursor-pointer"
-  >
-    <path
-      stroke-linecap="round"
-      stroke-linejoin="round"
-      d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
-    />
-  </svg>
-);
+type ButtonVariant = "enabled" | "disabled";
+
+const buttonVariants: Record<ButtonVariant, any> = {
+  enabled: {
+    color: "rgba(250 232 255 1)",
+  },
+  disabled: {
+    color: "rgba(250 232 255 .4)",
+  },
+};
+
+const LeftArrowButton = ({ enabled, onClick, className }: ButtonProps) => {
+  const variant: ButtonVariant = enabled ? "enabled" : "disabled";
+
+  return (
+    <button
+      onClick={onClick}
+      className={classNames(
+        enabled ? "cursor-pointer" : "cursor-default",
+        className
+      )}
+    >
+      <motion.svg
+        animate={variant}
+        variants={buttonVariants}
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        className={classNames("w-12 h-12", enabled ? "cursor-pointer" : null)}
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </motion.svg>
+    </button>
+  );
+};
+
+const RightArrowButton = ({ enabled, onClick, className }: ButtonProps) => {
+  const variant: ButtonVariant = enabled ? "enabled" : "disabled";
+
+  return (
+    <button
+      onClick={onClick}
+      className={classNames(
+        enabled ? "cursor-pointer" : "cursor-default",
+        className
+      )}
+    >
+      <motion.svg
+        animate={enabled ? "enabled" : "disabled"}
+        variants={buttonVariants}
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 24 24"
+        stroke-width="1.5"
+        stroke="currentColor"
+        className={classNames("w-12 h-12", enabled ? "cursor-pointer" : null)}
+      >
+        <path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
+        />
+      </motion.svg>
+    </button>
+  );
+};

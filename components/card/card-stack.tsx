@@ -1,6 +1,5 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { moveBackward, moveForward } from "../../utils/move";
 import { Card, CardProps } from "./card";
 import classNames from "classnames";
 import { CardStackControls } from "./controls";
@@ -44,7 +43,10 @@ export const CardStack = ({ children, className }: CardStackProps) => {
 
           return (
             <motion.li
-              className="absolute h-full"
+              className={classNames(
+                "absolute h-full",
+                index > cardPosition ? "cursor-pointer" : null
+              )}
               key={card.props.token}
               initial={false}
               animate={{
@@ -53,7 +55,8 @@ export const CardStack = ({ children, className }: CardStackProps) => {
                 scale,
                 zIndex,
               }}
-              transition={{ duration: 0.4, type: "tween", ease: "easeInOut" }}
+              transition={{ duration: 0.3, type: "tween", ease: "easeInOut" }}
+              onClick={() => setCardPosition(index)}
             >
               <Card
                 {...card.props}
@@ -67,7 +70,12 @@ export const CardStack = ({ children, className }: CardStackProps) => {
           );
         })}
       </ul>
-      <CardStackControls onNext={nextCard} onPrev={prevCard} />
+      <CardStackControls
+        onNext={nextCard}
+        onPrev={prevCard}
+        cardPosition={cardPosition}
+        numberOfCards={children.length}
+      />
     </div>
   );
 };
