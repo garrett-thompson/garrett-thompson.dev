@@ -60,7 +60,10 @@ export const CardStack = ({ children, className }: CardStackProps) => {
             >
               <Card
                 {...card.props}
-                className={classNames(card.props.className, "h-full")}
+                className={classNames(
+                  card.props.className,
+                  "h-full max-w-[calc(100vw-48px)] w-[calc(100vw-48px)] lg:w-[640px]"
+                )}
                 initial={false}
                 animate={{
                   filter: `brightness(${brightness})`,

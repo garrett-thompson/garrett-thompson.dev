@@ -29,29 +29,31 @@ const Home: NextPage = () => {
 
       <Banner>GARRETT THOMPSON</Banner>
 
-      <main className="h-screen w-screen px-6 py-2 lg:px-48 lg:py-12 flex flex-col bg-gradient-to-t from-sky-900 to-fuchsia-500 overflow-hidden">
-        <Heading1 className="text-fuchsia-200/80">EXPERIENCE</Heading1>
-        <div className="flex flex-col flex-1 mb-2 lg:mb-6 space-x-6">
-          <CardStack className="flex-auto">
-            <Card token="stripe_1" className="overflow-scroll">
-              <StripeExperience />
-            </Card>
-            <Card token="bloomtech_1" className="overflow-scroll">
-              <BloomTechExperience1 />
-            </Card>
-            <Card token="bloomtech_2" className="overflow-scroll">
-              <BloomTechExperience2 />
-            </Card>
-            <Card token="semanticbits_1" className="overflow-scroll">
-              <SemanticBitsExperience />
-            </Card>
-            <Card token="onovative_1" className="overflow-scroll">
-              <OnovativeExperience1 />
-            </Card>
-            <Card token="onovative_2" className="overflow-scroll">
-              <OnovativeExperience2 />
-            </Card>
-          </CardStack>
+      <main className="h-screen w-screen px-6 py-2 lg:px-48 lg:py-12 flex flex-col bg-gradient-to-t from-sky-900 to-fuchsia-500 overflow-hidden justify-center">
+        <div className="flex flex-col h-[80%] lg:h-full">
+          <Heading1 className="text-fuchsia-200/80">EXPERIENCE</Heading1>
+          <div className="flex flex-col flex-1 mb-2 lg:mb-6 space-x-6">
+            <CardStack className="flex-auto">
+              <Card token="stripe_1" className="overflow-scroll">
+                <StripeExperience />
+              </Card>
+              <Card token="bloomtech_1" className="overflow-scroll">
+                <BloomTechExperience1 />
+              </Card>
+              <Card token="bloomtech_2" className="overflow-scroll">
+                <BloomTechExperience2 />
+              </Card>
+              <Card token="semanticbits_1" className="overflow-scroll">
+                <SemanticBitsExperience />
+              </Card>
+              <Card token="onovative_1" className="overflow-scroll">
+                <OnovativeExperience1 />
+              </Card>
+              <Card token="onovative_2" className="overflow-scroll">
+                <OnovativeExperience2 />
+              </Card>
+            </CardStack>
+          </div>
         </div>
       </main>
     </div>

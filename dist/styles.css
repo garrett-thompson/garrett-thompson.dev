@@ -620,6 +620,10 @@ video {
   height: 3rem;
 }
 
+.h-\[80\%\] {
+  height: 80%;
+}
+
 .w-screen {
   width: 100vw;
 }
@@ -671,6 +675,10 @@ video {
 
 .items-center {
   align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
 }
 
 .justify-between {
@@ -894,6 +902,10 @@ video {
 
   .lg\:mb-6 {
     margin-bottom: 1.5rem;
+  }
+
+  .lg\:h-full {
+    height: 100%;
   }
 
   .lg\:w-\[640px\] {
