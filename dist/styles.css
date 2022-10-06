@@ -575,6 +575,14 @@ video {
   top: -74px;
 }
 
+.z-0 {
+  z-index: 0;
+}
+
+.z-10 {
+  z-index: 10;
+}
+
 .my-4 {
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -614,6 +622,14 @@ video {
 
 .h-12 {
   height: 3rem;
+}
+
+.max-h-\[100svh\] {
+  max-height: 100svh;
+}
+
+.max-h-\[100vh\] {
+  max-height: 100vh;
 }
 
 .w-screen {
@@ -687,6 +703,10 @@ video {
   overflow: hidden;
 }
 
+.overflow-clip {
+  overflow: clip;
+}
+
 .overflow-scroll {
   overflow: scroll;
 }
@@ -712,6 +732,31 @@ video {
   background-color: rgb(250 232 255 / var(--tw-bg-opacity));
 }
 
+.bg-blue-400 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(96 165 250 / var(--tw-bg-opacity));
+}
+
+.bg-sky-600 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(2 132 199 / var(--tw-bg-opacity));
+}
+
+.bg-sky-100 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(224 242 254 / var(--tw-bg-opacity));
+}
+
+.bg-sky-700 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(3 105 161 / var(--tw-bg-opacity));
+}
+
+.bg-sky-800 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(7 89 133 / var(--tw-bg-opacity));
+}
+
 .bg-gradient-to-t {
   background-image: linear-gradient(to top, var(--tw-gradient-stops));
 }
@@ -724,6 +769,14 @@ video {
 
 .to-fuchsia-500 {
   --tw-gradient-to: #d946ef;
+}
+
+.bg-cover {
+  background-size: cover;
+}
+
+.bg-fixed {
+  background-attachment: fixed;
 }
 
 .px-6 {
@@ -797,6 +850,10 @@ video {
 .text-sky-100 {
   --tw-text-opacity: 1;
   color: rgb(224 242 254 / var(--tw-text-opacity));
+}
+
+.text-sky-200\/80 {
+  color: rgb(186 230 253 / 0.8);
 }
 
 .opacity-10 {

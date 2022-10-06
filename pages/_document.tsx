@@ -18,7 +18,7 @@ class MyDocument extends Document {
 
   render() {
     return (
-      <Html>
+      <Html className="bg-sky-700">
         <Head>
           <link
             rel="preload"

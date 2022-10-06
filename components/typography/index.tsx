@@ -5,7 +5,7 @@ interface Heading1Props {
   children: React.ReactNode;
 }
 export const Banner = ({ children }: Heading1Props) => (
-  <span className="absolute left-[-12px] top-[-74px] origin-bottom-left text-[56px] lg:text-[70px] lg:top-[-82px] heading text-sky-100 opacity-10 lg:opacity-20 tracking-tight rotate-[90deg] whitespace-nowrap">
+  <span className="absolute z-0 left-[-12px] top-[-74px] origin-bottom-left text-[56px] lg:text-[70px] lg:top-[-82px] heading text-sky-100 opacity-10 lg:opacity-20 tracking-tight rotate-[90deg] whitespace-nowrap">
     {children}
   </span>
 );

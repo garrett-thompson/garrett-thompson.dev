@@ -15,7 +15,7 @@ export const CardStackControls = ({
   cardPosition,
   numberOfCards,
 }: CardStackControlsProps) => (
-  <div className={classNames("flex", className)}>
+  <div className={classNames("flex z-10", className)}>
     <LeftArrowButton
       className="mr-3"
       enabled={cardPosition > 0}
