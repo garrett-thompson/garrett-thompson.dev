@@ -38,10 +38,10 @@ type ButtonVariant = "enabled" | "disabled";
 
 const buttonVariants: Record<ButtonVariant, any> = {
   enabled: {
-    color: "rgba(250 232 255 1)",
+    color: "rgba(190 228 247 1)",
   },
   disabled: {
-    color: "rgba(250 232 255 .4)",
+    color: "rgba(190 228 247 .4)",
   },
 };
 
