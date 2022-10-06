@@ -16,7 +16,7 @@ import { CardStack } from "../components/card/card-stack";
 
 const Home: NextPage = () => {
   return (
-    <div className="relative">
+    <div className="relative overflow-hidden">
       <Head>
         <title>http://garrett-thompson.dev</title>
         <meta
