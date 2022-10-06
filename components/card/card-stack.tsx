@@ -3,6 +3,7 @@ import { motion } from "framer-motion";
 import { Card, CardProps } from "./card";
 import classNames from "classnames";
 import { CardStackControls } from "./controls";
+import cardStyles from "./card.module.scss";
 
 // Increasing this makes cards down the stack further from the top
 const TOP_OFFSET = 20;
@@ -62,7 +63,8 @@ export const CardStack = ({ children, className }: CardStackProps) => {
                 {...card.props}
                 className={classNames(
                   card.props.className,
-                  "h-full max-w-[calc(100vw-48px)] w-[calc(100vw-48px)] lg:w-[640px]"
+                  "h-full max-w-[calc(100vw-48px)] w-[calc(100vw-48px)] lg:w-[640px]",
+                  cardStyles.card
                 )}
                 initial={false}
                 animate={{
