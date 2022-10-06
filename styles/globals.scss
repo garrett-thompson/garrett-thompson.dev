@@ -11,3 +11,8 @@
 * {
   font-family: "Inter";
 }
+
+.full-height-fix {
+  height: 100vh; /* fallback in case (s)mallest (v)iew (h)eight is not supported */
+  height: 100svh;
+}
