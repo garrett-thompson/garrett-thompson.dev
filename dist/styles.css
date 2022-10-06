@@ -726,6 +726,10 @@ video {
   --tw-gradient-to: #d946ef;
 }
 
+.bg-fixed {
+  background-attachment: fixed;
+}
+
 .px-6 {
   padding-left: 1.5rem;
   padding-right: 1.5rem;
