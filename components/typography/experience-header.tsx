@@ -1,5 +1,4 @@
 import classNames from "classnames";
-import { BuildingIcon } from "../icons/building";
 
 interface ExperienceHeaderProps {
   dates: string;

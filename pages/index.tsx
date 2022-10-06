@@ -1,7 +1,5 @@
 import type { NextPage } from "next";
 import Head from "next/head";
-import { useState } from "react";
-import { motion } from "framer-motion";
 import { Card } from "../components/card/card";
 import { Banner, Heading1 } from "../components/typography";
 import {
