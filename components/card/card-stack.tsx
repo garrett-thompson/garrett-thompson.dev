@@ -56,7 +56,7 @@ export const CardStack = ({ children, className }: CardStackProps) => {
                 scale,
                 zIndex,
               }}
-              transition={{ duration: 0.3, type: "tween", ease: "easeInOut" }}
+              transition={{ duration: 0.4, type: "tween", ease: "easeOut" }}
               onClick={() => setCardPosition(index)}
             >
               <Card
