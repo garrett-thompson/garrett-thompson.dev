@@ -29,7 +29,7 @@ export const CardStack = ({ children, className }: CardStackProps) => {
           const position = index - cardPosition;
           const x =
             position < 0
-              ? "-100vw"
+              ? `${position * 100}vw`
               : position * (1 + SCALE_FACTOR) * LEFT_OFFSET;
           const y = position * TOP_OFFSET;
           const scale = position < 0 ? 1 : 1 - position * SCALE_FACTOR;
