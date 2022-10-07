@@ -32,20 +32,19 @@ export const CardStack = ({ children, className }: CardStackProps) => {
               ? "-100vw"
               : position * (1 + SCALE_FACTOR) * LEFT_OFFSET;
           const y = position * TOP_OFFSET;
-          const zIndex = children.length - position;
           const scale = position < 0 ? 1 : 1 - position * SCALE_FACTOR;
+          const zIndex = children.length - position;
           const brightness =
             position < 0 ? 1 : 1 - (position * SHADOW_FACTOR) / 100;
 
-          // console.log({
-          //   [position]: {
-          //     position,
-          //     x,
-          //     y,
-          //     scale,
-          //     brightness,
-          //   },
-          // });
+          console.log({
+            [position]: {
+              position,
+              x,
+              y,
+              scale,
+            },
+          });
 
           return (
             <motion.li
@@ -56,11 +55,11 @@ export const CardStack = ({ children, className }: CardStackProps) => {
               key={card.props.token}
               initial={false}
               animate={{
-                y,
                 x,
+                y,
                 scale,
-                zIndex,
               }}
+              style={{ zIndex }}
               transition={{ duration: 0.4, type: "tween", ease: "easeOut" }}
               onClick={() => setCardPosition(index)}
             >
