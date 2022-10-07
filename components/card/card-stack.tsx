@@ -57,7 +57,7 @@ export const CardStack = ({ children, className }: CardStackProps) => {
               animate={{
                 x,
                 y,
-                scale,
+                // scale,
               }}
               style={{ zIndex }}
               transition={{ duration: 0.4, type: "tween", ease: "easeOut" }}
