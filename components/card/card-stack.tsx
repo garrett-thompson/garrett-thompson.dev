@@ -37,15 +37,6 @@ export const CardStack = ({ children, className }: CardStackProps) => {
           const brightness =
             position < 0 ? 1 : 1 - (position * SHADOW_FACTOR) / 100;
 
-          console.log({
-            [position]: {
-              position,
-              x,
-              y,
-              scale,
-            },
-          });
-
           return (
             <motion.li
               className={classNames(
@@ -57,7 +48,7 @@ export const CardStack = ({ children, className }: CardStackProps) => {
               animate={{
                 x,
                 y,
-                // scale,
+                scale,
               }}
               style={{ zIndex }}
               transition={{ duration: 0.4, type: "tween", ease: "easeOut" }}
@@ -71,9 +62,10 @@ export const CardStack = ({ children, className }: CardStackProps) => {
                   cardStyles.card
                 )}
                 initial={false}
-                // animate={{
-                //   filter: `brightness(${brightness})`,
-                // }}
+                animate={{
+                  filter: `brightness(${brightness})`,
+                }}
+                transition={{ duration: 0.2 }}
               />
             </motion.li>
           );
