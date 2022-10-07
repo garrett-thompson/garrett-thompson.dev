@@ -20,14 +20,6 @@ interface CardStackProps {
 }
 export const CardStack = ({ children, className }: CardStackProps) => {
   const [cardPosition, setCardPosition] = React.useState(0);
-  const nextCard = () => {
-    setCardPosition((state) =>
-      state < children.length - 1 ? state + 1 : state
-    );
-  };
-  const prevCard = () => {
-    setCardPosition((state) => (state > 0 ? state - 1 : state));
-  };
 
   return (
     <div className={classNames("flex flex-col justify-between", className)}>
@@ -76,8 +68,7 @@ export const CardStack = ({ children, className }: CardStackProps) => {
         })}
       </ul>
       <CardStackControls
-        onNext={nextCard}
-        onPrev={prevCard}
+        setCardPosition={setCardPosition}
         cardPosition={cardPosition}
         numberOfCards={children.length}
       />

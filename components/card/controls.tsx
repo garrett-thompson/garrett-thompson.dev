@@ -1,32 +1,45 @@
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 import classNames from "classnames";
+import styles from "./controls.module.scss";
 
 interface CardStackControlsProps {
   className?: string;
-  onNext: () => void;
-  onPrev: () => void;
+  setCardPosition: React.Dispatch<React.SetStateAction<number>>;
   cardPosition: number;
   numberOfCards: number;
 }
+
 export const CardStackControls = ({
   className,
-  onNext,
-  onPrev,
+  setCardPosition,
   cardPosition,
   numberOfCards,
-}: CardStackControlsProps) => (
-  <div className={classNames("flex z-10", className)}>
-    <LeftArrowButton
-      className="mr-3"
-      enabled={cardPosition > 0}
-      onClick={onPrev}
-    />
-    <RightArrowButton
-      enabled={cardPosition < numberOfCards - 1}
-      onClick={onNext}
-    />
-  </div>
-);
+}: CardStackControlsProps) => {
+  const atBeginning = cardPosition === 0;
+  const atEnd = cardPosition === numberOfCards - 1;
+
+  const nextCard = () => {
+    setCardPosition((state) => (state < numberOfCards - 1 ? state + 1 : state));
+  };
+  const prevCard = () => {
+    setCardPosition((state) => (state > 0 ? state - 1 : state));
+  };
+  const backToBeginning = () => setCardPosition(0);
+
+  return (
+    <div
+      className={classNames(
+        "relative flex z-10 gap-x-2",
+        styles.controls,
+        className
+      )}
+    >
+      <LeftArrowButton enabled={!atBeginning} onClick={prevCard} />
+      <RightArrowButton enabled={!atEnd} onClick={nextCard} />
+      <BackToBeginningButton shouldShow={atEnd} onClick={backToBeginning} />
+    </div>
+  );
+};
 
 interface ButtonProps {
   enabled: boolean;
@@ -38,10 +51,10 @@ type ButtonVariant = "enabled" | "disabled";
 
 const buttonVariants: Record<ButtonVariant, any> = {
   enabled: {
-    color: "rgba(190 228 247 1)",
+    color: "var(--controls-enabled-blue)",
   },
   disabled: {
-    color: "rgba(190 228 247 .4)",
+    color: "var(--controls-disabled-blue)",
   },
 };
 
@@ -88,7 +101,7 @@ const RightArrowButton = ({ enabled, onClick, className }: ButtonProps) => {
       )}
     >
       <motion.svg
-        animate={enabled ? "enabled" : "disabled"}
+        animate={variant}
         variants={buttonVariants}
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -106,3 +119,45 @@ const RightArrowButton = ({ enabled, onClick, className }: ButtonProps) => {
     </button>
   );
 };
+
+interface BackToBeginningButtonProps extends Omit<ButtonProps, "enabled"> {
+  shouldShow: boolean;
+}
+
+const BackToBeginningButton = ({
+  onClick,
+  className,
+  shouldShow,
+}: BackToBeginningButtonProps) => (
+  <AnimatePresence>
+    {shouldShow ? (
+      <motion.button
+        key="back-to-beginning-button"
+        initial={{ left: "-6px", opacity: 0 }}
+        animate={{ left: "0", opacity: 1 }}
+        exit={{ left: "-6px", opacity: 0 }}
+        transition={{ type: "just" }}
+        onClick={onClick}
+        className={classNames(
+          "relative text-[color:var(--controls-enabled-blue)] ml-1",
+          className
+        )}
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          fill="none"
+          viewBox="0 0 24 24"
+          strokeWidth={1.5}
+          stroke="currentColor"
+          className="w-8 h-8"
+        >
+          <path
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"
+          />
+        </svg>
+      </motion.button>
+    ) : null}
+  </AnimatePresence>
+);
