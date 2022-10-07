@@ -71,9 +71,9 @@ export const CardStack = ({ children, className }: CardStackProps) => {
                   cardStyles.card
                 )}
                 initial={false}
-                animate={{
-                  filter: `brightness(${brightness})`,
-                }}
+                // animate={{
+                //   filter: `brightness(${brightness})`,
+                // }}
               />
             </motion.li>
           );
