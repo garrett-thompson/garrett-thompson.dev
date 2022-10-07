@@ -2,7 +2,6 @@ import { motion, MotionProps } from "framer-motion";
 import classNames from "classnames";
 
 export interface CardProps extends MotionProps {
-  token: string;
   children?: React.ReactNode;
   className?: string;
 }
