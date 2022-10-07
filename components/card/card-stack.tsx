@@ -18,6 +18,7 @@ interface CardStackProps {
   children: React.ReactElement<CardProps>[];
   className?: string;
 }
+
 export const CardStack = ({ children, className }: CardStackProps) => {
   const [cardPosition, setCardPosition] = React.useState(0);
 
@@ -26,13 +27,15 @@ export const CardStack = ({ children, className }: CardStackProps) => {
       <ul className="relative h-full my-4 lg:my-8">
         {children.map((card, index) => {
           const position = index - cardPosition;
-          const top = position * TOP_OFFSET;
-          let left: string | number =
-            position * (1 + SCALE_FACTOR) * LEFT_OFFSET;
-          if (position < 0) left = left * 10;
-          const scale = 1 - position * SCALE_FACTOR;
+          const x =
+            position < 0
+              ? "-100vw"
+              : position * (1 + SCALE_FACTOR) * LEFT_OFFSET;
+          const y = position * TOP_OFFSET;
+          const scale = position < 0 ? 1 : 1 - position * SCALE_FACTOR;
           const zIndex = children.length - position;
-          const brightness = 1 - (position * SHADOW_FACTOR) / 100;
+          const brightness =
+            position < 0 ? 1 : 1 - (position * SHADOW_FACTOR) / 100;
 
           return (
             <motion.li
@@ -43,11 +46,11 @@ export const CardStack = ({ children, className }: CardStackProps) => {
               key={card.props.token}
               initial={false}
               animate={{
-                top,
-                left,
+                x,
+                y,
                 scale,
-                zIndex,
               }}
+              style={{ zIndex }}
               transition={{ duration: 0.4, type: "tween", ease: "easeOut" }}
               onClick={() => setCardPosition(index)}
             >
@@ -62,6 +65,7 @@ export const CardStack = ({ children, className }: CardStackProps) => {
                 animate={{
                   filter: `brightness(${brightness})`,
                 }}
+                transition={{ duration: 0.2 }}
               />
             </motion.li>
           );

@@ -133,9 +133,9 @@ const BackToBeginningButton = ({
     {shouldShow ? (
       <motion.button
         key="back-to-beginning-button"
-        initial={{ left: "-6px", opacity: 0 }}
-        animate={{ left: "0", opacity: 1 }}
-        exit={{ left: "-6px", opacity: 0 }}
+        initial={{ x: "-6px", opacity: 0 }}
+        animate={{ x: "0", opacity: 1 }}
+        exit={{ x: "-6px", opacity: 0 }}
         transition={{ type: "just" }}
         onClick={onClick}
         className={classNames(
