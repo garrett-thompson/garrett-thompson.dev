@@ -9,7 +9,7 @@ export interface CardProps extends MotionProps {
 export const Card = ({ children, className, ...props }: CardProps) => (
   <motion.div
     className={classNames(
-      "relative px-6 py-5 rounded-xl bg-sky-100 shadow-xl",
+      "relative px-6 py-5 bg-sky-100 rounded-md shadow-xl",
       className
     )}
     {...props}

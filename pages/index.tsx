@@ -13,7 +13,7 @@ const Home: NextPage = () => {
   return (
     <div className="relative overflow-hidden">
       <Head>
-        <title>http://garrett-thompson.dev</title>
+        <title>Garrett Thompson - Resume</title>
         <meta
           name="description"
           content="Personal website for Garrett Thompson"
