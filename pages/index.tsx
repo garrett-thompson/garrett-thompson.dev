@@ -1,12 +1,6 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import { Banner, Heading1 } from "../components/typography";
-import {
-  OnovativeExperience1,
-  OnovativeExperience2,
-} from "../layouts/experience/onovative";
-import { SemanticBitsExperience } from "../layouts/experience/semantic-bits";
-import { StripeExperience } from "../layouts/experience/stripe";
 import { WorkExperience } from "../layouts/work-experience";
 
 const Home: NextPage = () => {
