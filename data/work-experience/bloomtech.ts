@@ -4,7 +4,6 @@ const bloomtechWorkExperience: WorkExperienceData = {
   company: "BloomTech",
   roles: [
     {
-      key: "bt-1",
       title: "Senior Software Engineer & Team Lead",
       dates: "May 2021 - Mar 2022",
       achievements: [
@@ -14,7 +13,6 @@ const bloomtechWorkExperience: WorkExperienceData = {
       ],
     },
     {
-      key: "bt-2",
       title: "Software Engineer",
       dates: "Apr 2019 - May 2021",
       achievements: [

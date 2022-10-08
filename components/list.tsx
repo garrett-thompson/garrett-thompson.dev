@@ -1,15 +1,27 @@
 import classnames from "classnames";
-import React from "react";
+import React, { ReactNode } from "react";
 
-interface ListProps {
-  children?: React.ReactNode;
+interface ULProps {
+  children: ReactNode;
   className?: string;
 }
 
-export const List = ({ children, className }: ListProps) => (
+const UL = ({ children, className }: ULProps) => (
   <ul className={classnames("list-disc ml-4 text-slate-900", className)}>
-    {React.Children.map(children, (child) => (
-      <li className="mt-2">{child}</li>
-    ))}
+    {children}
   </ul>
 );
+
+interface LIProps {
+  children: ReactNode;
+  className?: string;
+}
+
+const LI = ({ children, className }: LIProps) => (
+  <li className={classnames("mt-2", className)}>{children}</li>
+);
+
+export const List = {
+  UL,
+  LI,
+};

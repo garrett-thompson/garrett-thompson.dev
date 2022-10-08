@@ -7,7 +7,7 @@ import {
 } from "../layouts/experience/onovative";
 import { SemanticBitsExperience } from "../layouts/experience/semantic-bits";
 import { StripeExperience } from "../layouts/experience/stripe";
-import { WorkExperience } from "../components/work-experience";
+import { WorkExperience } from "../layouts/work-experience";
 
 const Home: NextPage = () => {
   return (
