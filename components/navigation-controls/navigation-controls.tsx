@@ -1,49 +1,36 @@
-import { AnimatePresence, motion } from "framer-motion";
+import { motion } from "framer-motion";
 import classNames from "classnames";
-import styles from "./controls.module.scss";
+import styles from "./navigation-controls.module.scss";
+import { NavigationAction } from "../../hooks/use-page-navigation";
 
-interface CardStackControlsProps {
+interface NavigationControlsProps {
   className?: string;
-  setCardPosition: React.Dispatch<React.SetStateAction<number>>;
-  cardPosition: number;
-  numberOfCards: number;
+  onNext: React.Dispatch<NavigationAction>;
+  onPrev: React.Dispatch<NavigationAction>;
 }
 
-export const CardStackControls = ({
+export const NavigationControls = ({
   className,
-  setCardPosition,
-  cardPosition,
-  numberOfCards,
-}: CardStackControlsProps) => {
-  const atBeginning = cardPosition === 0;
-  const atEnd = cardPosition === numberOfCards - 1;
-
-  const nextCard = () => {
-    setCardPosition((state) => (state < numberOfCards - 1 ? state + 1 : state));
-  };
-  const prevCard = () => {
-    setCardPosition((state) => (state > 0 ? state - 1 : state));
-  };
-  const backToBeginning = () => setCardPosition(0);
-
+  onNext,
+  onPrev,
+}: NavigationControlsProps) => {
   return (
     <div
       className={classNames(
-        "relative flex z-10 gap-x-2",
+        "relative flex justify-between z-10 w-full",
         styles.controls,
         className
       )}
     >
-      <LeftArrowButton enabled={!atBeginning} onClick={prevCard} />
-      <RightArrowButton enabled={!atEnd} onClick={nextCard} />
-      <BackToBeginningButton shouldShow={atEnd} onClick={backToBeginning} />
+      <LeftArrowButton enabled={true} onClick={onPrev} />
+      <RightArrowButton enabled={true} onClick={onNext} />
     </div>
   );
 };
 
 interface ButtonProps {
   enabled: boolean;
-  onClick: () => void;
+  onClick: React.Dispatch<any>;
   className?: string;
 }
 
@@ -119,45 +106,3 @@ const RightArrowButton = ({ enabled, onClick, className }: ButtonProps) => {
     </button>
   );
 };
-
-interface BackToBeginningButtonProps extends Omit<ButtonProps, "enabled"> {
-  shouldShow: boolean;
-}
-
-const BackToBeginningButton = ({
-  onClick,
-  className,
-  shouldShow,
-}: BackToBeginningButtonProps) => (
-  <AnimatePresence>
-    {shouldShow ? (
-      <motion.button
-        key="back-to-beginning-button"
-        initial={{ x: "-6px", opacity: 0 }}
-        animate={{ x: "0", opacity: 1 }}
-        exit={{ x: "-6px", opacity: 0 }}
-        transition={{ type: "just" }}
-        onClick={onClick}
-        className={classNames(
-          "relative text-[color:var(--controls-enabled-blue)] ml-1",
-          className
-        )}
-      >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          strokeWidth={1.5}
-          stroke="currentColor"
-          className="w-8 h-8"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            d="M9 15L3 9m0 0l6-6M3 9h12a6 6 0 010 12h-3"
-          />
-        </svg>
-      </motion.button>
-    ) : null}
-  </AnimatePresence>
-);
