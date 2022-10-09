@@ -58,9 +58,9 @@ function getVariants(windowWidth: number) {
       const endingX = direction === "forward" ? -windowWidth : windowWidth;
 
       return {
-        x: [0, 0, endingX],
-        scale: [1, 0.9, 0.9],
-        borderRadius: [0, 16, 16],
+        x: [null, 0, endingX],
+        scale: [null, 0.9, 0.9],
+        borderRadius: [null, 16, 16],
         transition: { type: "tween", duration: 0.9, ease: "easeInOut" },
       };
     },
