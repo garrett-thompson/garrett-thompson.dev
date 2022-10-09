@@ -15,7 +15,6 @@ type NavigationActionType = "go_forward" | "go_back";
 
 export interface NavigationAction {
   type: NavigationActionType;
-  // data?
 }
 
 function getInitialState(numberOfPages: number): NavigationState {
