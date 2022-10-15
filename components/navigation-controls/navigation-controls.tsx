@@ -17,7 +17,7 @@ export const NavigationControls = ({
   return (
     <div
       className={classNames(
-        "relative flex justify-between z-10 w-full",
+        "flex justify-between w-full",
         styles.controls,
         className
       )}

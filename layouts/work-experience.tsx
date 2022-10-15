@@ -1,7 +1,9 @@
 import React from "react";
-
-import classNames from "classnames";
+import { List } from "../components/list";
 import { PageCarousel } from "../components/page-carousel/page-carousel";
+import { Heading1 } from "../components/typography";
+import { ExperienceHeader } from "../components/typography/experience-header";
+import workExperience from "../data/work-experience";
 
 interface WorkExperienceProps {
   className?: string;
@@ -10,7 +12,26 @@ interface WorkExperienceProps {
 export const WorkExperience = ({ className }: WorkExperienceProps) => {
   return (
     <PageCarousel.Container>
-      <PageCarousel.Page>Experience</PageCarousel.Page>
+      <PageCarousel.Page>
+        <Heading1 className="text-sky-600">EXPERIENCE</Heading1>
+        {workExperience.map((we) =>
+          we.roles.map((role) => (
+            <>
+              <ExperienceHeader
+                key={role.key}
+                dates={role.dates}
+                company={we.company}
+                title={role.title}
+              />
+              <List.UL>
+                {role.achievements.map((ach) => (
+                  <List.LI key={ach.key}>{ach.value}</List.LI>
+                ))}
+              </List.UL>
+            </>
+          ))
+        )}
+      </PageCarousel.Page>
       <PageCarousel.Page>Experience</PageCarousel.Page>
       <PageCarousel.Page>Experience</PageCarousel.Page>
       <PageCarousel.Page>Experience</PageCarousel.Page>
