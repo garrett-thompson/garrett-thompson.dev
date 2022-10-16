@@ -47,6 +47,7 @@ export const CardPage = ({
           exit={"exit"}
           className="card-page absolute top-0 left-0 w-screen h-screen bg-white p-4 overflow-scroll"
         >
+          <span>notch height: {notchHeight}</span>
           <NavigationControls onNext={onNext} onPrev={onPrev} />
           {children}
         </motion.div>
