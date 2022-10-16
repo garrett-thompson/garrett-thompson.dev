@@ -29,6 +29,10 @@ class MyDocument extends Document {
               process.env.NODE_ENV === "development" ? "true" : "false" // don't be an Inter font server for the entire internet :)
             }
           />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0, viewport-fit=cover"
+          />
         </Head>
         <body>
           <Main />
