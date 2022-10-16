@@ -24,13 +24,27 @@ export const CardPage = ({
   onPrev,
 }: CardPageProps) => {
   const windowWidth = useWindowWidth();
-  const [notchHeight, setNotchHeight] = useState(0);
+  const [insets, setInsets] = useState<
+    Record<"top" | "left" | "bottom" | "right", string | undefined>
+  >({
+    top: undefined,
+    right: undefined,
+    left: undefined,
+    bottom: undefined,
+  });
   useLayoutEffect(() => {
-    setNotchHeight(
-      parseInt(
-        getComputedStyle(document.documentElement).getPropertyValue("--sat")
-      )
-    );
+    setInsets({
+      top: getComputedStyle(document.documentElement).getPropertyValue("--sat"),
+      right: getComputedStyle(document.documentElement).getPropertyValue(
+        "--sar"
+      ),
+      left: getComputedStyle(document.documentElement).getPropertyValue(
+        "--sal"
+      ),
+      bottom: getComputedStyle(document.documentElement).getPropertyValue(
+        "--sab"
+      ),
+    });
   }, []);
   const navigationDirection: NavigationDirection | null =
     currentPageNumber > prevPageNumber
@@ -42,12 +56,15 @@ export const CardPage = ({
       {currentPageNumber === pageNumber && (
         <motion.div
           custom={navigationDirection}
-          variants={getVariants(windowWidth, notchHeight)}
+          variants={getVariants(windowWidth)}
           animate={"active"}
           exit={"exit"}
           className="card-page absolute top-0 left-0 w-screen h-screen bg-white p-4 overflow-scroll"
         >
-          <span>notch height: {notchHeight}</span>
+          <span>top: {insets.top}</span>
+          <span>bottom: {insets.bottom}</span>
+          <span>left: {insets.left}</span>
+          <span>right: {insets.right}</span>
           <NavigationControls onNext={onNext} onPrev={onPrev} />
           {children}
         </motion.div>
@@ -56,13 +73,13 @@ export const CardPage = ({
   );
 };
 
-function getVariants(windowWidth: number, notchHeight: number): Variants {
+function getVariants(windowWidth: number): Variants {
   return {
     active: (direction: NavigationDirection) => {
       const startingX = direction === "forward" ? windowWidth : -windowWidth;
 
       return {
-        y: [-notchHeight, -notchHeight, -notchHeight],
+        // y: [-notchHeight, -notchHeight, -notchHeight],
         x: [startingX, 0, 0],
         scale: [0.9, 0.9, 1],
         borderRadius: [16, 16, 0],
@@ -78,7 +95,7 @@ function getVariants(windowWidth: number, notchHeight: number): Variants {
       const endingX = direction === "forward" ? -windowWidth : windowWidth;
 
       return {
-        y: [-notchHeight, -notchHeight, -notchHeight],
+        // y: [-notchHeight, -notchHeight, -notchHeight],
         x: [null, 0, endingX],
         scale: [null, 0.9, 0.9],
         borderRadius: [null, 16, 16],

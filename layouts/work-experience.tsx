@@ -16,9 +16,8 @@ export const WorkExperience = ({ className }: WorkExperienceProps) => {
         <Heading1 className="text-sky-600">EXPERIENCE</Heading1>
         {workExperience.map((we) =>
           we.roles.map((role) => (
-            <>
+            <div key={role.key}>
               <ExperienceHeader
-                key={role.key}
                 dates={role.dates}
                 company={we.company}
                 title={role.title}
@@ -28,7 +27,7 @@ export const WorkExperience = ({ className }: WorkExperienceProps) => {
                   <List.LI key={ach.key}>{ach.value}</List.LI>
                 ))}
               </List.UL>
-            </>
+            </div>
           ))
         )}
       </PageCarousel.Page>
