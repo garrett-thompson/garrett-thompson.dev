@@ -1,4 +1,3 @@
-import { useWindowWidth } from "@react-hook/window-size";
 import { Children, ReactNode } from "react";
 import { usePageNavigation } from "../../hooks/use-page-navigation";
 import { CardPage } from "./card-page";
@@ -8,7 +7,6 @@ interface PageCarouselProps {
 }
 
 const Container = ({ children }: PageCarouselProps) => {
-  const windowWidth = useWindowWidth();
   const [state, dispatch] = usePageNavigation(Children.count(children));
 
   return (
@@ -19,7 +17,6 @@ const Container = ({ children }: PageCarouselProps) => {
             {...child.props}
             {...state}
             pageNumber={i + 1}
-            windowWidth={windowWidth}
             onNext={() => dispatch({ type: "go_forward" })}
             onPrev={() => dispatch({ type: "go_back" })}
           />

@@ -1,3 +1,4 @@
+import { useWindowWidth } from "@react-hook/window-size";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import { ReactNode } from "react";
 import {
@@ -9,7 +10,6 @@ import { NavigationControls } from "../navigation-controls/navigation-controls";
 
 interface CardPageProps extends NavigationState {
   pageNumber: number;
-  windowWidth: number;
   children?: ReactNode;
   onNext: React.Dispatch<NavigationAction>;
   onPrev: React.Dispatch<NavigationAction>;
@@ -19,11 +19,14 @@ export const CardPage = ({
   currentPageNumber,
   prevPageNumber,
   pageNumber,
-  windowWidth,
   children,
   onNext,
   onPrev,
 }: CardPageProps) => {
+  const windowWidth = useWindowWidth();
+  const notchHeight = parseInt(
+    getComputedStyle(document.documentElement).getPropertyValue("--sat")
+  );
   const navigationDirection: NavigationDirection | null =
     currentPageNumber > prevPageNumber
       ? NavigationDirection.forward
@@ -34,7 +37,7 @@ export const CardPage = ({
       {currentPageNumber === pageNumber && (
         <motion.div
           custom={navigationDirection}
-          variants={getVariants(windowWidth)}
+          variants={getVariants(windowWidth, notchHeight)}
           animate={"active"}
           exit={"exit"}
           className="card-page absolute top-0 left-0 w-screen h-screen bg-white p-4 overflow-scroll"
@@ -47,12 +50,13 @@ export const CardPage = ({
   );
 };
 
-function getVariants(windowWidth: number): Variants {
+function getVariants(windowWidth: number, notchHeight: number): Variants {
   return {
     active: (direction: NavigationDirection) => {
       const startingX = direction === "forward" ? windowWidth : -windowWidth;
 
       return {
+        y: [-notchHeight, -notchHeight, -notchHeight],
         x: [startingX, 0, 0],
         scale: [0.9, 0.9, 1],
         borderRadius: [16, 16, 0],
@@ -68,6 +72,7 @@ function getVariants(windowWidth: number): Variants {
       const endingX = direction === "forward" ? -windowWidth : windowWidth;
 
       return {
+        y: [-notchHeight, -notchHeight, -notchHeight],
         x: [null, 0, endingX],
         scale: [null, 0.9, 0.9],
         borderRadius: [null, 16, 16],
