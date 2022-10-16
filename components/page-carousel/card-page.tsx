@@ -1,6 +1,6 @@
 import { useWindowWidth } from "@react-hook/window-size";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-import { ReactNode } from "react";
+import { ReactNode, useLayoutEffect, useState } from "react";
 import {
   NavigationAction,
   NavigationDirection,
@@ -24,9 +24,14 @@ export const CardPage = ({
   onPrev,
 }: CardPageProps) => {
   const windowWidth = useWindowWidth();
-  const notchHeight = parseInt(
-    getComputedStyle(document.documentElement).getPropertyValue("--sat")
-  );
+  const [notchHeight, setNotchHeight] = useState(0);
+  useLayoutEffect(() => {
+    setNotchHeight(
+      parseInt(
+        getComputedStyle(document.documentElement).getPropertyValue("--sat")
+      )
+    );
+  }, []);
   const navigationDirection: NavigationDirection | null =
     currentPageNumber > prevPageNumber
       ? NavigationDirection.forward
