@@ -1,6 +1,6 @@
 import { useWindowWidth } from "@react-hook/window-size";
 import { motion, AnimatePresence, Variants } from "framer-motion";
-import { ReactNode, useLayoutEffect, useState } from "react";
+import { ReactNode } from "react";
 import {
   NavigationAction,
   NavigationDirection,
@@ -24,28 +24,6 @@ export const CardPage = ({
   onPrev,
 }: CardPageProps) => {
   const windowWidth = useWindowWidth();
-  const [insets, setInsets] = useState<
-    Record<"top" | "left" | "bottom" | "right", string | undefined>
-  >({
-    top: undefined,
-    right: undefined,
-    left: undefined,
-    bottom: undefined,
-  });
-  useLayoutEffect(() => {
-    setInsets({
-      top: getComputedStyle(document.documentElement).getPropertyValue("--sat"),
-      right: getComputedStyle(document.documentElement).getPropertyValue(
-        "--sar"
-      ),
-      left: getComputedStyle(document.documentElement).getPropertyValue(
-        "--sal"
-      ),
-      bottom: getComputedStyle(document.documentElement).getPropertyValue(
-        "--sab"
-      ),
-    });
-  }, []);
   const navigationDirection: NavigationDirection | null =
     currentPageNumber > prevPageNumber
       ? NavigationDirection.forward
@@ -61,10 +39,6 @@ export const CardPage = ({
           exit={"exit"}
           className="card-page absolute top-0 left-0 w-screen h-screen bg-white p-4 overflow-scroll"
         >
-          <span>top: {insets.top}</span>
-          <span>bottom: {insets.bottom}</span>
-          <span>left: {insets.left}</span>
-          <span>right: {insets.right}</span>
           <NavigationControls onNext={onNext} onPrev={onPrev} />
           {children}
         </motion.div>
@@ -79,7 +53,6 @@ function getVariants(windowWidth: number): Variants {
       const startingX = direction === "forward" ? windowWidth : -windowWidth;
 
       return {
-        // y: [-notchHeight, -notchHeight, -notchHeight],
         x: [startingX, 0, 0],
         scale: [0.9, 0.9, 1],
         borderRadius: [16, 16, 0],
@@ -95,7 +68,6 @@ function getVariants(windowWidth: number): Variants {
       const endingX = direction === "forward" ? -windowWidth : windowWidth;
 
       return {
-        // y: [-notchHeight, -notchHeight, -notchHeight],
         x: [null, 0, endingX],
         scale: [null, 0.9, 0.9],
         borderRadius: [null, 16, 16],
