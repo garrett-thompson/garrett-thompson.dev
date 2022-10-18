@@ -30,7 +30,7 @@ export const CardPage = ({
       : NavigationDirection.backward;
 
   return (
-    <AnimatePresence custom={navigationDirection}>
+    <AnimatePresence custom={navigationDirection} initial={false}>
       {currentPageNumber === pageNumber && (
         <motion.div
           custom={navigationDirection}
