@@ -5,52 +5,49 @@ export enum NavigationDirection {
   "backward" = "backward",
 }
 
-export interface NavigationState {
-  numberOfPages: number;
-  currentPageNumber: number;
-  prevPageNumber: number;
-}
-
-type NavigationActionType = "go_forward" | "go_back";
-
 export interface NavigationAction {
-  type: NavigationActionType;
+  page: PageLink;
 }
 
-function getInitialState(numberOfPages: number): NavigationState {
-  return {
-    numberOfPages,
-    currentPageNumber: 1,
-    prevPageNumber: 0,
+export enum PageLink {
+  Experience = "#experience",
+  Skills = "#skills",
+}
+
+const pageOrder: PageLink[] = [PageLink.Experience, PageLink.Skills];
+
+export function getNextPage(page: PageLink) {
+  const currentIndex = pageOrder.findIndex((p) => p === page);
+  return pageOrder[currentIndex + 1];
+}
+
+export function getPrevPage(page: PageLink) {
+  const currentIndex = pageOrder.findIndex((p) => p === page);
+  return pageOrder[currentIndex - 1];
+}
+
+interface State {
+  page: PageLink;
+  direction: NavigationDirection;
+}
+
+export function reducer(state: State, action: NavigationAction): State {
+  const currentPagePosition = pageOrder.findIndex((p) => p === state.page);
+  const nextPagePosition = pageOrder.findIndex((p) => p === action.page);
+
+  const direction =
+    nextPagePosition > currentPagePosition
+      ? NavigationDirection.forward
+      : NavigationDirection.backward;
+
+  return { page: action.page, direction };
+}
+
+export function usePageNavigation() {
+  const initialState: State = {
+    page: PageLink.Experience,
+    direction: NavigationDirection.forward,
   };
-}
 
-export function reducer(
-  state: NavigationState,
-  action: NavigationAction
-): NavigationState {
-  switch (action.type) {
-    case "go_forward":
-      if (state.currentPageNumber === state.numberOfPages) return state;
-
-      return {
-        ...state,
-        prevPageNumber: state.currentPageNumber,
-        currentPageNumber: state.currentPageNumber + 1,
-      };
-    case "go_back":
-      if (state.currentPageNumber === 1) return state;
-
-      return {
-        ...state,
-        prevPageNumber: state.currentPageNumber,
-        currentPageNumber: state.currentPageNumber - 1,
-      };
-    default:
-      throw new Error("Unrecognized action");
-  }
-}
-
-export function usePageNavigation(numberOfPages: number) {
-  return useReducer(reducer, getInitialState(numberOfPages));
+  return useReducer(reducer, initialState);
 }
