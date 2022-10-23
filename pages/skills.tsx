@@ -16,7 +16,7 @@ const Home: NextPage = () => {
       <Banner>GARRETT THOMPSON</Banner>
 
       <main className="h-screen w-screen px-6 py-2 lg:px-48 lg:py-12 flex flex-col justify-center">
-        no
+        Skills
       </main>
     </div>
   );

@@ -619,10 +619,6 @@ video {
   width: 3rem;
 }
 
-.flex-auto {
-  flex: 1 1 auto;
-}
-
 .origin-bottom-left {
   transform-origin: bottom left;
 }
